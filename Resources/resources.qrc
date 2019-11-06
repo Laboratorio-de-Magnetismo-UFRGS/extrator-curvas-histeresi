@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/icons">
+    <file>icons/iconfinder_General_Office_03_3592873.svg</file>
+    <file>icons/iconfinder_General_Office_10_3592815.svg</file>
+    <file>icons/iconfinder_General_Office_24_3592821.svg</file>
+  </qresource>
+</RCC>
