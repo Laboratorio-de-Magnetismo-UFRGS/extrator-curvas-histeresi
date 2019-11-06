@@ -17,20 +17,21 @@ a = Analysis(['Application.py'],
              noarchive=False)
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
+
+a.datas += [
+    ('.\\Resources\\icons\icon.png', '.\\Resources\\icons\icon.png', 'DATA')
+]
 exe = EXE(pyz,
           a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           [],
-          exclude_binaries=True,
-          name='Application',
+          name='Extrator de Histerese',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=True )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               name='Application')
+          runtime_tmpdir=None,
+          console=False,
+          icon='\\Resources\\icons\\icon.png' )
