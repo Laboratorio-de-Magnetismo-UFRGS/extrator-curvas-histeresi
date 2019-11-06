@@ -1,2 +1,1 @@
 from .MainWindowView import Ui_MainWindow as MainWindowView
-from .ExtracaoConcluidaView import Ui_Dialog as ExtracaoConcluidaView

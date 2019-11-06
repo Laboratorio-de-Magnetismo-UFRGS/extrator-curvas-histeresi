@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>151</height>
+    <height>153</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Extrator de Curvas de Histerese</string>
+   <string>LAM - Extrator de Curvas de Histerese</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../Resources/resources.qrc">
+    <normaloff>:/icons/icons/icon.png</normaloff>:/icons/icons/icon.png</iconset>
   </property>
   <widget class="QWidget" name="programa">
    <property name="enabled">
@@ -21,7 +25,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>31</y>
+      <y>11</y>
       <width>641</width>
       <height>41</height>
      </rect>
@@ -37,7 +41,7 @@
     <property name="geometry">
      <rect>
       <x>670</x>
-      <y>30</y>
+      <y>10</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -54,7 +58,7 @@
     <property name="geometry">
      <rect>
       <x>670</x>
-      <y>80</y>
+      <y>60</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -66,6 +70,61 @@
      <iconset resource="../Resources/resources.qrc">
       <normaloff>:/icons/icons/iconfinder_General_Office_10_3592815.svg</normaloff>:/icons/icons/iconfinder_General_Office_10_3592815.svg</iconset>
     </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>641</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>641</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Você deve selecionar a pasata onde estão todas as medidas. O programa percorrerá todos os arquivos .vhd e extrairá a curva de</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>621</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>modo que o nome de cada arquivo é {pasta original}__{nome original do arquivo}.dat</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>631</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>cada medida.    Será gerada uma pasta chamada &quot;Arquivos .dat&quot; dentro da pasta selecionada com um arquivo para cada curva de</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

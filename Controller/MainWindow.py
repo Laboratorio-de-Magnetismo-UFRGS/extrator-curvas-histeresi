@@ -4,16 +4,6 @@ from sys import platform
 from PyQt5 import QtWidgets, QtCore
 
 import View.MainWindowView
-import View.ExtracaoConcluidaView
-
-class ExtracaoConcluida(QtWidgets.QDialog):
-    def __init__(self, mensagem = ''):
-        super().__init__()
-        self.ui = View.ExtracaoConcluidaView()
-        self.ui.setupUi(self)
-
-        self.ui.okButton.clicked.connect(self.close)
-        self.ui.mensagem.setText(mensagem)
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -88,8 +78,7 @@ class MainWindow(QtWidgets.QMainWindow):
                         columns = arquivo[i].split()
                         arquivo_saida.write("%s %s\n" % (columns[H_column], columns[Mx_column]))
         
-        a = ExtracaoConcluida('Extração Concluída')
-        a.show()
+        QtWidgets.QMessageBox.about(self, "Sucesso", "Extração realizada com sucesso!")
 
         self.ui.programa.setDisabled(False)
         self.caminhoPasta = ''
