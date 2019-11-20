@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debugar Através do Application.py",
+            "name": "Debugar Através do Extrator de Histerese.py",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/Application.py",
+            "program": "${workspaceFolder}/Extrator de Histerese.py",
             "console": "integratedTerminal"
         }
     ]

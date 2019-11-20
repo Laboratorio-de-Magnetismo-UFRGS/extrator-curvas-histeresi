@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['Application.py'],
+a = Analysis(['Extrator de Histerese.py'],
              pathex=['C:\\Users\\Sabrina\\Documents\\Leonardo Barcelos\\Projetos\\extrator-curvas-histerese'],
              binaries=[],
              datas=[],
@@ -19,18 +19,14 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           [],
-          exclude_binaries=True,
           name='Extrator de Histerese',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
+          runtime_tmpdir=None,
           console=False )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               name='Extrator de Histerese')

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>153</height>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,111 +21,189 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <widget class="QLineEdit" name="caminhoPasta">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>11</y>
-      <width>641</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>Caminho da pasta contendo os arquivos .vhd</string>
-    </property>
-    <property name="placeholderText">
-     <string>Caminho dos arquivos do VSM</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="abrirPasta">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>10</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Selecionar</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../Resources/resources.qrc">
-      <normaloff>:/icons/icons/iconfinder_General_Office_03_3592873.svg</normaloff>:/icons/icons/iconfinder_General_Office_03_3592873.svg</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="extrair">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>60</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Extrair</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../Resources/resources.qrc">
-      <normaloff>:/icons/icons/iconfinder_General_Office_10_3592815.svg</normaloff>:/icons/icons/iconfinder_General_Office_10_3592815.svg</iconset>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>60</y>
-      <width>641</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>641</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Você deve selecionar a pasata onde estão todas as medidas. O programa percorrerá todos os arquivos .vhd e extrairá a curva de</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>621</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>modo que o nome de cada arquivo é {pasta original}__{nome original do arquivo}.dat</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>631</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>cada medida.    Será gerada uma pasta chamada &quot;Arquivos .dat&quot; dentro da pasta selecionada com um arquivo para cada curva de</string>
-     </property>
-    </widget>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLineEdit" name="caminhoPasta">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>38</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Caminho da pasta contendo os arquivos .vhd</string>
+        </property>
+        <property name="placeholderText">
+         <string>Caminho dos arquivos do VSM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>55</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>51</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>Configurações</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QCheckBox" name="pastaUnica">
+             <property name="text">
+              <string>Pasta Única</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Nome da Pasta de Saída dos Arquivos:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="pastaSaida">
+               <property name="text">
+                <string>Arquivos .dat</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QTextEdit" name="textEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;INTRUÇÕES&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1) Você pode tanto selecionar a pasta contendo todas as medidas de todas as amostras, quanto selecionar a pasta de uma amostra específica contendo as várias medidas dessa única amostra.&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2) Você deve selecionar se essa pasta é única, ou seja, se os arquivos .VHD de interesse estão diretamente dentro dela. Caso você queira iterar sobre várias pastas, ou seja, várias amostras, você deve desativar esta opção.&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;3) Será criada uma pasta dentro da pasta selecionada com o nome que você definir no campo &lt;span style=&quot; font-style:italic;&quot;&gt;Nome da Pasta de Saída dos Arquivos&lt;/span&gt;. Por padrão o nome dessa pasta é &lt;span style=&quot; font-style:italic;&quot;&gt;Arquivos.dat&lt;/span&gt;. Este nome não pode conter caracteres especiais, tais como &lt;span style=&quot; font-family:'Consolas,Courier New,monospace'; font-size:8pt; color:#d7ba7d;&quot;&gt;\ &lt;/span&gt;&lt;span style=&quot; font-family:'Consolas,Courier New,monospace'; font-size:8pt; color:#ce9178;&quot;&gt;/ : * ? &lt;/span&gt;&lt;span style=&quot; font-family:'Consolas,Courier New,monospace'; font-size:8pt; color:#d7ba7d;&quot;&gt;&amp;quot; &lt;/span&gt;&lt;span style=&quot; font-family:'Consolas,Courier New,monospace'; font-size:8pt; color:#ce9178;&quot;&gt;&amp;lt; &amp;gt; |&lt;/span&gt; e nem pode ser deixado em branco!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QPushButton" name="abrirPasta">
+        <property name="minimumSize">
+         <size>
+          <width>111</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Selecionar</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../Resources/resources.qrc">
+          <normaloff>:/icons/icons/iconfinder_General_Office_03_3592873.svg</normaloff>:/icons/icons/iconfinder_General_Office_03_3592873.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="extrair">
+        <property name="minimumSize">
+         <size>
+          <width>111</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>41</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Extrair</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../Resources/resources.qrc">
+          <normaloff>:/icons/icons/iconfinder_General_Office_10_3592815.svg</normaloff>:/icons/icons/iconfinder_General_Office_10_3592815.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>
