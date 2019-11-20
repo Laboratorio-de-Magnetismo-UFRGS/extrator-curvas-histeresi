@@ -57,9 +57,11 @@ class MainWindow(QtWidgets.QMainWindow):
             separator = '\\'
 
         pastaUnica = self.ui.pastaUnica.isChecked()
+        pastaCriada = False
 
         if not os.path.exists(self.caminhoPasta + separator + pastaSaida):
             os.makedirs(self.caminhoPasta + separator + pastaSaida)
+            pastaCriada = True
 
         contadorArquivos = 0
 
@@ -138,7 +140,8 @@ class MainWindow(QtWidgets.QMainWindow):
                         contadorArquivos += 1
         if contadorArquivos == 0:
             QtWidgets.QMessageBox.about(self, "Informação", "Não foi encontrado nenhum arquivo .VHD")
-            shutil.rmtree(self.caminhoPasta + separator + pastaSaida)
+            if pastaCriada:
+                shutil.rmtree(self.caminhoPasta + separator + pastaSaida)
         else:
             QtWidgets.QMessageBox.about(self, "Sucesso", f"{contadorArquivos} curvas extraídas com sucesso!")
 
