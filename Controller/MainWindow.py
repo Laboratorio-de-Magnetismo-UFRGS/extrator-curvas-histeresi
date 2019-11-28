@@ -135,7 +135,7 @@ class MainWindow(QtWidgets.QMainWindow):
                         #para pegar as colunas com os dados do arquivo VHD
                         for i in range(begin_table, end_table):
                             columns = arquivo[i].split()
-                            arquivo_saida.write("%s %s\n" % (columns[H_column], columns[Mx_column]))
+                            arquivo_saida.write("%s %s %s\n" % (columns[H_column], columns[Mx_column], columns[My_column]))
 
                         contadorArquivos += 1
         if contadorArquivos == 0:

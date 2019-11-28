@@ -5,7 +5,7 @@ compile_views:
 	pyuic5 ./UI/MainWindow.ui -o ./View/MainWindowView.py  --import-from View -i 0
 
 create_executable: compile_views
-	pyinstaller.exe "Extrator de Histerese.py" --onefile --windowed
+	pyinstaller.exe "Extrator de Histerese.spec" --name="Extrator de Histerese 2.2.5" --onefile --windowed
 
 
 clean:
