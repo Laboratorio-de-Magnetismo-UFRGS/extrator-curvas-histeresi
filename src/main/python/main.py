@@ -9,6 +9,8 @@ import Controller.MainWindow
 class AppContext(ApplicationContext):
     def run(self):
         window = Controller.MainWindow()
+        version = self.build_settings['version']
+        window.setWindowTitle(f"LAM - Extrator de Curvas de Histerese v{version}")
         window.show()
         return self.app.exec_()
     
