@@ -64,6 +64,7 @@ class MainWindow(QtWidgets.QMainWindow):
             pastaCriada = True
 
         contadorArquivos = 0
+        arquivosIncompletos = 0
 
         if pastaUnica:
             for file in os.listdir(self.caminhoPasta):
@@ -72,33 +73,13 @@ class MainWindow(QtWidgets.QMainWindow):
                     arquivo = open(os.path.join(self.caminhoPasta, file)).read().splitlines()
                     arquivo_saida = open(self.caminhoPasta + separator + pastaSaida + separator + nomeArquivo + '.dat', 'w')
 
-                    for i in range(0, len(arquivo)):
-                        line = arquivo[i]		
-                        if ': Applied Field For Plot' in line:
-                            aux = list(filter(str.isdigit, line))
-                            aux = ''.join(aux)
-                            H_column = int(aux)
-                        if ': Signal X direction' in line: 
-                            aux = list(filter(str.isdigit, line))
-                            aux = ''.join(aux)
-                            Mx_column  = int(aux)
-                        if ': Signal Y direction' in line: 
-                            aux = list(filter(str.isdigit, line))
-                            aux = ''.join(aux)
-                            My_column  = int(aux)
-                        if '@@End of Header.' in line: 
-                            begin_table = i + 5
-                        if '@@END Data.' in line: 
-                            end_table = i
-                            break
-
-                    
-                    #para pegar as colunas com os dados do arquivo VHD
-                    for i in range(begin_table, end_table):
-                        columns = arquivo[i].split()
-                        arquivo_saida.write("%s %s\n" % (columns[H_column], columns[Mx_column]))
-                    
-                    contadorArquivos += 1
+                    if self.extrairCurva(arquivo, arquivo_saida):
+                        arquivo_saida.close()
+                        contadorArquivos += 1
+                    else:
+                        arquivo_saida.close()
+                        arquivosIncompletos += 1
+                        os.remove(self.caminhoPasta + separator + pastaSaida + separator + nomeArquivo + '.dat')
         
         else:
             for subdir, dirs, files in os.walk(self.caminhoPasta):
@@ -111,45 +92,66 @@ class MainWindow(QtWidgets.QMainWindow):
                         arquivo = open(os.path.join(subdir, file)).read().splitlines()
                         arquivo_saida = open(self.caminhoPasta + separator + pastaSaida + separator + subdir_name + "__" + nomeArquivo + '.dat', 'w')
 
-                        for i in range(0, len(arquivo)):
-                            line = arquivo[i]		
-                            if ': Applied Field For Plot' in line:
-                                aux = list(filter(str.isdigit, line))
-                                aux = ''.join(aux)
-                                H_column = int(aux)
-                            if ': Signal X direction' in line: 
-                                aux = list(filter(str.isdigit, line))
-                                aux = ''.join(aux)
-                                Mx_column  = int(aux)
-                            if ': Signal Y direction' in line: 
-                                aux = list(filter(str.isdigit, line))
-                                aux = ''.join(aux)
-                                My_column  = int(aux)
-                            if '@@End of Header.' in line: 
-                                begin_table = i + 5
-                            if '@@END Data.' in line: 
-                                end_table = i
-                                break
+                        if self.extrairCurva(arquivo, arquivo_saida):
+                            arquivo_saida.close()
+                            contadorArquivos += 1
+                        else:
+                            arquivo_saida.close()
+                            arquivosIncompletos += 1
+                            os.remove(self.caminhoPasta + separator + pastaSaida + separator + subdir_name + "__" + nomeArquivo + '.dat')
 
-                        
-                        #para pegar as colunas com os dados do arquivo VHD
-                        for i in range(begin_table, end_table):
-                            columns = arquivo[i].split()
-                            arquivo_saida.write("%s %s %s\n" % (columns[H_column], columns[Mx_column], columns[My_column]))
 
-                        contadorArquivos += 1
-        if contadorArquivos == 0:
+        if contadorArquivos == 0 and arquivosIncompletos == 0:
             QtWidgets.QMessageBox.about(self, "Informação", "Não foi encontrado nenhum arquivo .VHD")
             if pastaCriada:
                 shutil.rmtree(self.caminhoPasta + separator + pastaSaida)
         else:
-            QtWidgets.QMessageBox.about(self, "Sucesso", f"{contadorArquivos} curvas extraídas com sucesso!")
+            if arquivosIncompletos == 0:
+                QtWidgets.QMessageBox.about(self, "Sucesso", f"{contadorArquivos} curvas extraídas com sucesso!")
+            elif contadorArquivos == 0 and arquivosIncompletos > 0:
+                QtWidgets.QMessageBox.about(self, "Sucesso", f"Nenhum arquivo está completo!")
+            else:
+                QtWidgets.QMessageBox.about(self, "Sucesso", f"{contadorArquivos} curvas extraídas com sucesso! {arquivosIncompletos} arquivos incompletos")
 
         self.ui.programa.setDisabled(False)
         self.caminhoPasta = ''
         self.ui.caminhoPasta.setText('')
         self.ui.extrair.setDisabled(True)
 
+    def extrairCurva(self, arquivo, arquivo_saida):
+        begin_table = None
+        end_table = None
+        for i in range(0, len(arquivo)):
+            line = arquivo[i]		
+            if ': Applied Field For Plot' in line:
+                aux = list(filter(str.isdigit, line))
+                aux = ''.join(aux)
+                H_column = int(aux)
+            if ': Signal X direction' in line: 
+                aux = list(filter(str.isdigit, line))
+                aux = ''.join(aux)
+                Mx_column  = int(aux)
+            if ': Signal Y direction' in line: 
+                aux = list(filter(str.isdigit, line))
+                aux = ''.join(aux)
+                My_column  = int(aux)
+            if '@@End of Header.' in line: 
+                begin_table = i + 5
+            if '@@END Data.' in line: 
+                end_table = i
+                break
+
+        if not begin_table or not end_table:
+            return False
+
+        arquivo_saida.write("H Mx My\n")
+        
+        #para pegar as colunas com os dados do arquivo VHD
+        for i in range(begin_table, end_table):
+            columns = arquivo[i].split()
+            arquivo_saida.write("%s %s %s\n" % (columns[H_column], columns[Mx_column], columns[My_column]))
+
+        return True
 
 
 

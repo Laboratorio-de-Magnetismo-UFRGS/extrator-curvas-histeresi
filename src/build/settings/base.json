@@ -2,7 +2,7 @@
     "app_name": "Extrator de Histerese",
     "author": "Leonardo Barcelos",
     "main_module": "src/main/python/main.py",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "public_settings": [
         "licensing_pubkey"
     ]
